@@ -1,6 +1,5 @@
 package pl_coderslab.entity;
 
-
 import org.mindrot.jbcrypt.BCrypt;
 import pl_coderslab.DbUtil;
 
@@ -10,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserDao {
-    private static String CREATE_USER_QUERY = "INSERT INTO users (email, username, password) VALUES (?,?,?)";
+    private static final String CREATE_USER_QUERY = "INSERT INTO users (email, username, password) VALUES (?,?,?)";
 
 
     public User create(User user) {
@@ -22,20 +21,17 @@ public class UserDao {
             preStmt.executeUpdate();
             ResultSet rs = preStmt.getGeneratedKeys();
             if (rs.next()) {
-                int id = rs.getInt(1);
-                user.setId(id);
+                user.setId(rs.getInt(1));
             }
-            rs.close();
+            return user;
         } catch (SQLException e) {
             e.printStackTrace();
+            return null;
         }
-        return user;
     }
 
     public String hashPassword(String password) {
-
         return BCrypt.hashpw(password, BCrypt.gensalt());
-
     }
 
 }

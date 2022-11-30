@@ -11,13 +11,7 @@ import java.sql.SQLException;
 
 public class UserDao {
     private static String CREATE_USER_QUERY = "INSERT INTO users (email, username, password) VALUES (?,?,?)";
-    private static String READ_USER_QUERY = "SELECT email, username, password FROM users WHERE id = ?";
-    private static String UPDATE_USER_QUERY = "SELECT id, email, username, password FROM users WHERE id = ?";
-    private static String UPDATE_USER_EMAIL_QUERY = "UPDATE users SET email = ? WHERE id = ?";
-    private static String UPDATE_USER_USERNAME_QUERY = "UPDATE users SET username = ? WHERE id = ?";
-    private static String UPDATE_USER_PASSWORD_QUERY = "UPDATE users SET password = ? WHERE id = ?";
-    private static String DELETE_USER_QUERY = "DELETE FROM users WHERE id = ?";
-    private static String READ_USERS_QUERY = "SELECT id, email, username, password FROM users";
+
 
     public User create(User user) {
         try (Connection connection = DbUtil.connect();

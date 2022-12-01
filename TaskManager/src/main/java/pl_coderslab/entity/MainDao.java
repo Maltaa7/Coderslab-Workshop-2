@@ -18,11 +18,11 @@ public class MainDao {
         System.out.println(userRead);
 
 
-        User userRead2= new User();
+        User userRead2 = new User();
         userRead2 = userDao.read(18);
         System.out.println(userRead2);
 
-        User userToUpdate= new User();
+        User userToUpdate = new User();
 
         userToUpdate = userDao.read(1);
         userToUpdate.setEmail("marta@gmail.com");
